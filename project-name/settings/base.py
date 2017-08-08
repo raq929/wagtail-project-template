@@ -30,6 +30,11 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'menus',
+    'blog',
+    'common',
+    'simple',
+
     'wagtail.contrib.settings',
     'wagtail.contrib.wagtailroutablepage',
     'wagtail.contrib.modeladmin',
@@ -55,6 +60,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'build',
 ]
 
 MIDDLEWARE = [
@@ -154,6 +161,8 @@ else:
 
 WAGTAIL_SITE_NAME = "project-name"
 
+WAGTAILIMAGES_IMAGE_MODEL = 'common.CustomImage'
+
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
@@ -167,29 +176,12 @@ WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,
         'BUNDLE_DIR_NAME': 'bundles/',  # must end with slash
-        'STATS_FILE': os.path.join(BASE_DIR, 'common/static/bundles/webpack-stats.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, 'build/static/bundles/webpack-stats.json'),
         'POLL_INTERVAL': 0.1,
         'TIMEOUT': None,
         'IGNORE': ['.+\.hot-update.js', '.+\.map']
     }
 }
-
-# Sadly, we have to set these to real-looking (but invalid) values, or
-# django-analytical will raise AnalyticalException. It would be preferable to be
-# able to set these to None (or not be required to set them at all, which the
-# django-analytical docs incorrectly suggest is possible).
-PIWIK_DOMAIN_PATH = 'analytics.example.com'
-# Piwik Site ID's start at 1, so 0 is an invalid ID which can be used to
-# indicate to the template that the Piwik tracking code should not be rendered.
-PIWIK_SITE_ID = '0'
-
-SETTINGS_EXPORT = [
-    'PIWIK_SITE_ID',
-]
-
-RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY', '')
-RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY', '')
-NOCAPTCHA = True
 
 # django-taggit
 TAGGIT_CASE_INSENSITIVE = True
