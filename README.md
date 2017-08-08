@@ -29,3 +29,5 @@ Set the database url as the `DATABASE_URL` enviromnent variable.
 The format for `DATABASE_URL` urls is
 `<type_of_database>://<database_user>:<database_password>@<server>:<port>/<database_name>`
 The default is a sqLite database.
+
+## [LICENSE](LICENSE.md)
