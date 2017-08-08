@@ -21,3 +21,11 @@
 
 ### Requirements
 When compliling requirements using `pip compile`, it's important to compile requirements before compiling dev-requirements, as dev-requirements depends on the requirements file.
+
+### Database configuration
+
+Set the database url as the `DATABASE_URL` enviromnent variable.
+
+The format for `DATABASE_URL` urls is
+`<type_of_database>://<database_user>:<database_password>@<server>:<port>/<database_name>`
+The default is a sqLite database.
