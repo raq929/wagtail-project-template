@@ -1,7 +1,7 @@
 db.sqlite3*
 /static/
 /media/
-/project-name/settings/local.py
+/project_root/settings/local.py
 *.pyc
 __pycache__
 
