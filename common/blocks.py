@@ -39,35 +39,22 @@ ALIGNMENT_CHOICES = (
 )
 
 
-class AlignedCaptionedImageBlock(blocks.StructBlock):
+class AlignedImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
-    caption = blocks.RichTextBlock(
-        required=False,
-        help_text='Image description displayed below the image. Organization/Photographer can be set via the image attribution.'
-    )
     alignment = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES)
 
     class Meta:
-        template = 'common/blocks/aligned_captioned_image.html'
+        template = 'common/blocks/aligned_image.html'
         icon = 'image'
         label = 'Image'
 
 
-class AlignedCaptionedEmbedBlock(blocks.StructBlock):
+class AlignedEmbedBlock(blocks.StructBlock):
     video = EmbedBlock()
-    caption = blocks.RichTextBlock(
-        required=False,
-        help_text='Video description displayed below the video.'
-    )
-    attribution = blocks.CharBlock(
-        max_length=255,
-        required=False,
-        help_text='Organization / Director.'
-    )
     alignment = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES)
 
     class Meta:
-        template = 'common/blocks/aligned_captioned_embed.html'
+        template = 'common/blocks/aligned_embed.html'
         icon = 'media'
         label = 'Video'
 

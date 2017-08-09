@@ -14,8 +14,8 @@ from common.blocks import (
     Heading2,
     Heading3,
     StyledTextBlock,
-    AlignedCaptionedImageBlock,
-    AlignedCaptionedEmbedBlock,
+    AlignedImageBlock,
+    AlignedEmbedBlock,
     RichTextBlockQuoteBlock,
 )
 
@@ -62,14 +62,14 @@ class BaseSidebarPageMixin(models.Model):
 class SimplePage(Page):
     body = StreamField([
         ('text', StyledTextBlock(label='Text', template='common/blocks/styled_text_full_bleed.html')),
-        ('image', AlignedCaptionedImageBlock()),
+        ('image', AlignedImageBlock()),
         ('raw_html', blocks.RawHTMLBlock()),
         ('blockquote', RichTextBlockQuoteBlock()),
         ('list', blocks.ListBlock(
             blocks.CharBlock(label="List Item"),
             template='common/blocks/list_block_columns.html'
         )),
-        ('video', AlignedCaptionedEmbedBlock()),
+        ('video', AlignedEmbedBlock()),
         ('heading_1', Heading1()),
         ('heading_2', Heading2()),
         ('heading_3', Heading3()),
@@ -102,14 +102,14 @@ class SimplePage(Page):
 class SimplePageWithMenuSidebar(BaseSidebarPageMixin, Page):
     body = StreamField([
         ('text', StyledTextBlock(label='Text')),
-        ('image', AlignedCaptionedImageBlock()),
+        ('image', AlignedImageBlock()),
         ('raw_html', blocks.RawHTMLBlock()),
         ('blockquote', RichTextBlockQuoteBlock()),
         ('list', blocks.ListBlock(
             blocks.CharBlock(label="List Item"),
             template='common/blocks/list_block_columns.html'
         )),
-        ('video', AlignedCaptionedEmbedBlock()),
+        ('video', AlignedEmbedBlock()),
         ('heading_1', Heading1()),
         ('heading_2', Heading2()),
         ('heading_3', Heading3()),
