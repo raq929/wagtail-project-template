@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags render_as_template %}
+{% load wagtailcore_tags %}
 
 {% block meta %}
 	{{ block.super }}
@@ -16,7 +16,7 @@
 		<h1 class="heading-block heading-block--1">{{ page.title }}</h1>
 		<div class="stream-sections">
 			<article>
-				<div class="stream-section stream-section--white">
+				<div class="stream-section">
 					<div class="blog-page__date">
 						{{ page.publication_datetime|date:"F j, Y"  }}
 					</div>
@@ -36,8 +36,4 @@
 			</div>
 		</div>
 	</div>
-{% endblock %}
-
-{% block sidebar %}
-	{% include "blog/_blog_details.html" %}
 {% endblock %}

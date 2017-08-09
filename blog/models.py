@@ -20,13 +20,13 @@ from common.blocks import (
     Heading2,
     Heading3,
     StyledTextBlock,
-    AlignedCaptionedImageBlock,
-    AlignedCaptionedEmbedBlock,
+    AlignedImageBlock,
+    AlignedEmbedBlock,
     RichTextBlockQuoteBlock,
 )
 
 
-class BlogIndexPage(Page):
+class BlogIndexPage(MetadataPageMixin, Page):
     body = StreamField([
         ('rich_text', blocks.RichTextBlock(icon='doc-full', label='Rich Text')),
         ('image', ImageChooserBlock()),
@@ -50,14 +50,8 @@ class BlogIndexPage(Page):
 
     def get_context(self, request):
         context = super(BlogIndexPage, self).get_context(request)
+        entry_qs = self.get_posts()
 
-        post_filters = BlogFilter.from_querystring(request.GET)
-        entry_qs = post_filters.filter(self.get_posts())
-
-        if post_filters.author:
-            context['author_filter'] = PersonPage.objects.get(pk=post_filters.author)
-        if post_filters.organization:
-            context['organization_filter'] = OrganizationPage.objects.get(pk=post_filters.organization)
 
         paginator, entries = paginate(
             request,
@@ -70,30 +64,7 @@ class BlogIndexPage(Page):
         context['entries_page'] = entries
         context['paginator'] = paginator
 
-        if request.is_ajax():
-            context['layout_template'] = 'base.ajax.html'
-        else:
-            context['layout_template'] = 'base.html'
-
         return context
-
-    # The following method is in large part copied from incident_index_page.py.
-    def serve(self, request, *args, **kwargs):
-        response = super(BlogIndexPage, self).serve(request, *args, **kwargs)
-        if request.is_ajax():
-            # We don't want the browser to cache the response to an XHR because
-            # it gets served with a different layout template. This becomes
-            # problematic when a visitor hits the Back button in her browser
-            # and ends up seeing the cached version without any typical layout.
-            #
-            # n.b. This method mutates the response and returns None.
-            patch_cache_control(
-                response,
-                no_cache=True,
-                no_store=True,
-                must_revalidate=True,
-            )
-        return response
 
     def get_meta_description(self):
         return truncatewords(
@@ -109,20 +80,18 @@ class BlogPage(MetadataPageMixin, Page):
 
     body = StreamField([
         ('text', StyledTextBlock(label='Text', template='common/blocks/styled_text_full_bleed.html')),
-        ('image', AlignedCaptionedImageBlock()),
+        ('image', AlignedImageBlock()),
         ('raw_html', blocks.RawHTMLBlock()),
         ('blockquote', RichTextBlockQuoteBlock()),
         ('list', blocks.ListBlock(
             blocks.CharBlock(label="List Item"),
             template='common/blocks/list_block_columns.html'
         )),
-        ('video', AlignedCaptionedEmbedBlock()),
+        ('video', AlignedEmbedBlock()),
         ('heading_1', Heading1()),
         ('heading_2', Heading2()),
         ('heading_3', Heading3()),
     ])
-
-    link_to_original_post = models.URLField(blank=True, null=True)
 
     teaser_image = models.ForeignKey(
         'common.CustomImage',
@@ -130,13 +99,6 @@ class BlogPage(MetadataPageMixin, Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-    )
-
-    image_caption = RichTextField(
-        max_length=255,
-        blank=True,
-        null=True,
-        help_text='Image description displayed below the image. Organization/Photographer can be set via the image attribution.'
     )
 
     teaser_text = RichTextField(
@@ -156,12 +118,10 @@ class BlogPage(MetadataPageMixin, Page):
     content_panels = Page.content_panels + [
         FieldPanel('publication_datetime'),
         StreamFieldPanel('body'),
-        FieldPanel('link_to_original_post'),
         MultiFieldPanel(
             heading='Teaser',
             children=[
                 ImageChooserPanel('teaser_image'),
-                FieldPanel('image_caption'),
                 FieldPanel('teaser_text'),
             ]
         ),
