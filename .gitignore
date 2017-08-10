@@ -1,16 +1,15 @@
 db.sqlite3*
 /static/
 /media/
-/project-name/settings/local.py
+/project_root/settings/local.py
 *.pyc
 __pycache__
 
 node_modules
 npm-debug.log
 webpack-stats.json
-# Do not make a bundles/ ignore line ;-)
-/common/static/js/bundles/
-/common/static/bundles/
+# Ignore build files
+/build/static/bundles
 .manage_cmds_ran/
 logs/
 
@@ -24,7 +23,7 @@ devops/.vagrant
 # Functional tests
 geckodriver.log
 
-# pip+docker install artifacts
+# pip install artifacts
 src/
 
 # developer postgres testing
