@@ -9,7 +9,7 @@
     django-admin startproject name --template=https://github.com/littleweaver/wagtail-project-template.git
     ```
 
-1.  Double check that all instances of `project_root` were replaced with your project name. You may need to do this manually for `package.json` and `.gitignore`
+1.  Double check that all instances of `project_name` were replaced with your project name. You may need to do this manually for `package.json` and `.gitignore`
 
 1.  Change this README to be relevant to your project.
 
