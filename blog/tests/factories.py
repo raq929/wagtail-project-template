@@ -4,7 +4,7 @@ import factory
 import wagtail_factories
 
 from blog.models import BlogPage, BlogIndexPage
-from common.tests.factories import PersonPageFactory, OrganizationPageFactory
+from common.tests.factories import PersonPageFactory
 
 
 class BlogIndexPageFactory(wagtail_factories.PageFactory):
@@ -22,4 +22,3 @@ class BlogPageFactory(wagtail_factories.PageFactory):
         tzinfo=timezone.utc)
     parent = factory.SubFactory(BlogIndexPageFactory)
     author = factory.SubFactory(PersonPageFactory)
-    organization = factory.SubFactory(OrganizationPageFactory)
