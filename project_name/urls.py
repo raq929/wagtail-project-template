@@ -35,7 +35,7 @@ if settings.DEBUG:
     try:
         import debug_toolbar
         urlpatterns = [
-                       url(r'^__debug__/', include(debug_toolbar.urls))
-                    ] + urlpatterns
+            url(r'^__debug__/', include(debug_toolbar.urls))
+        ] + urlpatterns
     except ImportError:
         pass

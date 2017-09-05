@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.cache import patch_cache_control
 from django.utils.html import strip_tags
 from django.template.defaultfilters import truncatewords
 

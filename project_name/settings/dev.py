@@ -1,9 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-import os
-import subprocess
 from django.conf import settings
-from .base import *  # noqa: F403, F401
+from .base import *  # noqa: F403,F401
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # This MUST BE CHANGED for every project
@@ -14,7 +12,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 try:
-    from .local import *  # noqa: F403, F401
+    from .local import *  # noqa: F403,F401
 except ImportError:
     pass
 
@@ -37,5 +35,5 @@ if settings.DEBUG:
     INTERNAL_IPS = []
 
 DATABASES = {
-    'default': dj_database_url.config(default="sqlite:///db.sqlite3")
+    'default': dj_database_url.config(default="sqlite:///db.sqlite3")  # noqa: F405
 }
