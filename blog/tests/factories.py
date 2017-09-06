@@ -20,5 +20,6 @@ class BlogPageFactory(wagtail_factories.PageFactory):
     publication_datetime = factory.Faker(
         'date_time_this_month', after_now=False, before_now=True,
         tzinfo=timezone.utc)
+    title = factory.Faker('sentence')
     parent = factory.SubFactory(BlogIndexPageFactory)
     author = factory.SubFactory(PersonPageFactory)
