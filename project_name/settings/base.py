@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'menus',
     'blog',
     'common',
+    'home',
     'simple',
 
     'wagtail.contrib.settings',
