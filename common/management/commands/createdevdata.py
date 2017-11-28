@@ -29,19 +29,7 @@ class Command(BaseCommand):
         try:
             HomePage.objects.get(slug='home')
         except ObjectDoesNotExist:
-            Page.objects.filter(slug='home').delete()
-            home_page = HomePage(title='Home', slug='home')
-
-            root_page = Page.objects.get(title='Root')
-            root_page.add_child(instance=home_page)
-
-            Site.objects.create(
-                site_name='project_name (Dev)',
-                hostname='localhost',
-                port='8000',
-                root_page=home_page,
-                is_default_site=True
-            )
+            management.call_command('createhomepage')
 
         management.call_command('createblogdata', '10')
 
