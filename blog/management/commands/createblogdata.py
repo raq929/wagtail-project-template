@@ -1,13 +1,10 @@
-import random
-
-
 from blog.models import BlogIndexPage
 from blog.tests.factories import BlogPageFactory, BlogIndexPageFactory
 from home.models import HomePage
 
-from django.core.exceptions import ObjectDoesNotExist
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db import transaction
+from django.core import management
 
 
 class Command(BaseCommand):
@@ -23,8 +20,8 @@ class Command(BaseCommand):
         try:
             home_page = HomePage.objects.get(slug='home')
         except HomePage.DoesNotExist:
-            raise CommandError('HomePage with slug "home" does not exist.')
-
+            management.call_command('createhomepage')
+            home_page = HomePage.objects.get(slug='home')
 
         if BlogIndexPage.objects.all():
             blog_index_page = BlogIndexPage.objects.first()
@@ -32,4 +29,4 @@ class Command(BaseCommand):
             blog_index_page = BlogIndexPageFactory(parent=home_page)
 
         for x in range(number_of_posts):
-            blog_page = BlogPageFactory(parent=blog_index_page)
+            BlogPageFactory(parent=blog_index_page)
