@@ -43,6 +43,6 @@ class Command(BaseCommand):
             self.stdout.write(
                 'Superuser created:\n'
                 '\tname: test\n'
-                '\temail: test@project_name\n'
+                '\temail: test@project_name.com\n'
                 '\tpassword: test'
             )
