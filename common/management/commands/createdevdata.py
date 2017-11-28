@@ -1,8 +1,5 @@
-from home.models import HomePage
+from wagtail.wagtailcore.models import Page
 
-from wagtail.wagtailcore.models import Page, Site
-
-from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 from django.db import transaction
@@ -24,13 +21,11 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **options):
         if options['delete']:
+            # Deletes home page and all of it's children.
+            # Settings and snippets (including menus) need to be deleted seperately.
             Page.objects.filter(slug='home').delete()
 
-        try:
-            HomePage.objects.get(slug='home')
-        except ObjectDoesNotExist:
-            management.call_command('createhomepage')
-
+        management.call_command('createhomepage')
         management.call_command('createblogdata', '10')
 
         # Create superuser
