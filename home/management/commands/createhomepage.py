@@ -1,14 +1,11 @@
 from home.models import HomePage
 
 from wagtail.wagtailcore.models import Page, Site
-from django.contrib.sites.models import Site as DjangoSite
 
+from django.contrib.sites.models import Site as DjangoSite
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from django.core import management
-
 
 
 class Command(BaseCommand):
