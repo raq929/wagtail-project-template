@@ -36,7 +36,7 @@ class Command(BaseCommand):
             root_page.add_child(instance=home_page)
 
             Site.objects.create(
-                site_name='SecureDrop.org (Dev)',
+                site_name='project_name (Dev)',
                 hostname='localhost',
                 port='8000',
                 root_page=home_page,
