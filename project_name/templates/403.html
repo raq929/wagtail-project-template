@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block site_title %}403{% endblock %}
+
+{% block page_title_text %}{% trans "Unauthorized" %}{% endblock %}
+
+{% block main %}
+	<p>
+		{% trans "You are not authorized to view this page." %}
+	</p>
+{% endblock %}

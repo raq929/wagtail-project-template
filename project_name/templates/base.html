@@ -1,10 +1,16 @@
 {% extends "super.html" %}
 
-
 {% block body %}
-  {% block secondary-header %}
-  {% endblock %}
+	{% block page_title %}
+		<header class="header__title">
+			<h1 class="header__title-text">
+				{% block page_title_text %}
+					{{ page.title }}
+				{% endblock %}
+			</h1>
+		</header>
+	{% endblock %}
 
 	{% block main %}
-  {% endblock %}
+	{% endblock %}
 {% endblock %}
