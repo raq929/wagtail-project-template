@@ -32,7 +32,7 @@ class Command(BaseCommand):
         if not User.objects.filter(is_superuser=True).exists():
             User.objects.create_superuser(
                 'test',
-                'test@project_name',
+                'test@project_name.com',
                 'test',
             )
             self.stdout.write(
