@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'menus',
     'blog',
     'common',
+    'home',
     'simple',
 
     'wagtail.contrib.settings',
@@ -60,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'build',
 ]
