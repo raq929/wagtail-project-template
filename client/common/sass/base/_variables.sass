@@ -1,6 +1,6 @@
 // FONT SIZES
 
-$1rem: 16px
+$rem-in-px: 16px
 
 $h1: 2rem
 $h2: 1.5rem
@@ -13,8 +13,10 @@ $h6: 1rem
 
 $sans-serif: Calibri, "Gil Sans", sans-serif
 $serif: Georgia, serif
+$mono: monospace
 
 // FONT WEIGHTS
+
 $serif-regular: 400
 $serif-bold: 600
 $sans-regular: 400
@@ -28,9 +30,9 @@ $sans-bold: 600
 
 $white: #FFF
 $gray10: #ddd
-$gray10--text: darken($gray-light,10)
+$gray10--text: darken($gray10,10)
 $gray50: #888
-$gray50--text: darken($gray-mid,5)
+$gray50--text: darken($gray50,5)
 $gray80: #444
 $gray80--text: darken($gray80,5)
 $gray90: #222
@@ -51,8 +53,15 @@ $link-hover-color: darken($brand-primary, 10)
 // $breakpoints-map mixins for sorting ascending and ensuring starting at 0 are not included, so do that yourself.
 
 $breakpoint-tiny: 0
-$breakpoint-extra-small: 24rem
-$breakpoint-small: 36rem
-$breakpoint-medium: 48rem
-$breakpoint-large: 60rem
-$breakpoint-extra-large: 72rem
+$breakpoint-extra-small: 400px
+$breakpoint-small: 768px
+$breakpoint-medium: 1024px
+$breakpoint-large: 1290px
+$breakpoint-extra-large: 1500px
+
+
+// BUTTONS
+
+$button-border-radius: 0.25rem
+$button-padding-x: 1rem
+$button-padding-y: 0.5rem

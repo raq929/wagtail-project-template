@@ -1,17 +1,17 @@
 .blockquote
 	+p-remove-first-and-last-margin
-	color: $gray-light-text
+	color: $gray10--text
 	line-height: 1.5
-	margin: 1rem $simple-page-padding
-	padding-left: 2em
+	margin: 1rem
+	padding-left: 2rem
 
-	@media(min-width: $small-screen-min)
-		padding-left: 3em
+	+media-breakpoint-down(extra-small)
+		padding-left: 3rem
 
 	&__citation
 		+p-remove-first-and-last-margin
-		+underline-link
+		+link--underline
 		display: block
 		font-style: normal
-		margin-top: 0.5em
+		margin-top: 0.5rem
 		text-transform: uppercase
