@@ -3,12 +3,13 @@
 > A template for a Wagtail project with basic apps and a Webpack setup.
 
 ## Table of Contents
-*	[Requirements](#requirements)
-*	[Create a new repo](#create-a-new-repo)
+* [Requirements](#requirements)
+* [Create a new repo](#create-a-new-repo)
 * [Development](#development)
    * [Quick start](#quick-start)
    * [Adding requirements](#adding-requirements)
    * [Database configuration](#database-configuration)
+   * [Managment commands](#management-commands)
 
 ## Requirements
 * Python 3
@@ -16,13 +17,13 @@
 
 ## Create a new repo from this template.
 
-1.	Clone this repo
-1.	Create a new virtualenv for your project and run `pip install django`
-1.	Create a new project from the template by running `django-admin startproject <project_name> --template=wagtail-project-template`
+1.  Clone this repo
+1.  Create a new virtualenv for your project and run `pip install django`
+1.  Create a new project from the template by running `django-admin startproject <project_name> --template=wagtail-project-template`
 1.  `cd` into your new project directory and run `git init` to initialize a git repository. Make an initial commit.
 1.  Open your new project in a text editor and replace all instances of `project_name` with your project name.
 1.  Change this README to be relevant to your project.
-1.	Create a database using the instructions below.
+1.  Create a database using the instructions below.
 
 ## Development
 
@@ -48,7 +49,7 @@ When compliling requirements using `pip compile`, it's important to compile requ
 The first time you run, you'll need to run migrations and create a superuser:
 
 ```bash
-		python manage.py migrate           # Create/sync the database.
+    python manage.py migrate           # Create/sync the database.
     python manage.py createsuperuser   # Create an initial user.
 ```
 
@@ -67,13 +68,19 @@ If no database is specified, the default is a SQLite database.
 You can now run the server: `DATABASE_URL=postgres:///project_name ./manage.py runserver`
 
 ### Management commands
-`createdevdata [--delete]`
-		This command creates a basic Wagtail site and a superuser. It calls all other management commands related to development data. The delete flag deletes all data before creating new data.
-
-`createhomepage [--delete]`
-		This command creates a homepage and Wagtail Site if they do not already exist. If called with the `delete` flag, deletes all pages except the root and creates a homepage. You will need to restart the server after running this command, as the Wagtail site number will change.
-
-`createblogposts <number_of_posts>`
-		This command creates a blog index page (if it does not already exist) and the specified number of blog posts.
+<dl>
+  <dt>createdevdata [--delete]</dt>
+  <dd>
+    This command creates a basic Wagtail site and a superuser. It calls all other management commands related to development data. The delete flag deletes all data before creating new data.
+  </dd>
+  <dt>createhomepage [--delete]</dt>
+  <dd>
+    This command creates a homepage and Wagtail Site if they do not already exist. If called with the delete flag, deletes all pages except the root and creates a homepage. You will need to restart the server after running this command, as the Wagtail site number will change.
+  </dd>
+  <dt>createblogposts <number_of_posts></dt>
+  <dd>
+    This command creates a blog index page (if it does not already exist) and the specified number of blog posts.
+  </dd>
+</dl>
 
 ## [LICENSE](LICENSE.md)
