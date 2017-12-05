@@ -1,6 +1,7 @@
 Django<1.12
 
 bleach
+dj-database-url
 django-modelcluster
 django-settings-export
 django-webpack-loader
@@ -8,7 +9,7 @@ factory_boy
 gunicorn
 pip-tools
 psycopg2
-wagtail
+wagtail==1.12
 wagtail-factories
 wagtail-metadata
 unittest-xml-reporting
