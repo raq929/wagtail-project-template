@@ -45,8 +45,20 @@ When compliling requirements using `pip compile`, it's important to compile requ
 
 ### Database configuration
 
-Create a database. Example: `createdb project_name`.
-Set the database url as the `DATABASE_URL` enviromnent variable.
+The first time you run, you'll need to run migrations and create a superuser:
+
+```bash
+		python manage.py migrate           # Create/sync the database.
+    python manage.py createsuperuser   # Create an initial user.
+```
+
+``base.py`` will use sqlite3 by default.
+You can use postgres with the ``DATABASE_URL`` environment variable.
+
+```bash
+    createdb project_name
+    DATABASE_URL=postgres:///project_name python manage.py migrate
+```
 
 The format for `DATABASE_URL` urls is
 `<type_of_database>://<database_user>:<database_password>@<server>:<port>/<database_name>`
