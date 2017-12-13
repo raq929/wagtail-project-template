@@ -18,11 +18,11 @@
 ## Usage
 
 ### Requirements
-When compliling requirements using `pip compile`, it's important to compile requirements before compiling dev-requirements, as dev-requirements depends on the requirements file. Follow the steps below when adding requirements.
+Use [`pipenv`](https://docs.pipenv.org/) to manage requirements.
 
-1.  Add package name to `requirements.in`
-1.  `pip-compile --output-file requirements.txt requirements.in`
-1.  `pip-compile --output-file dev-requirements.txt dev-requirements.in`
+1.  `pipenv install --three` # Creates a virtualenv with python3 and installs normal dependencies
+1.  `pipenv install --dev` # Installs dev dependencies
+1.  `pipenv install <package>` # Installs the package and automatically updates `Pipfile` and `Pipfile.lock`.
 
 ### Database configuration
 
