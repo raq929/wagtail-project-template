@@ -37,19 +37,19 @@ INSTALLED_APPS = [
     'simple',
 
     'wagtail.contrib.settings',
-    'wagtail.contrib.wagtailroutablepage',
+    'wagtail.contrib.routable_page',
     'wagtail.contrib.modeladmin',
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
 
     'wagtailmetadata',
     'webpack_loader',
@@ -67,17 +67,16 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'project_name.urls'
@@ -163,6 +162,7 @@ else:
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "project_name"
+SITE_ID = 1
 
 WAGTAILIMAGES_IMAGE_MODEL = 'common.CustomImage'
 

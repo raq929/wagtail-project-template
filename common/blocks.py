@@ -1,6 +1,6 @@
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.core import blocks
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
 
 from common.choices import BACKGROUND_COLOR_CHOICES
 
