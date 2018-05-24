@@ -1,5 +1,6 @@
 from blog.models import BlogIndexPage
 from blog.tests.factories import BlogPageFactory, BlogIndexPageFactory
+from common.tests.factories import PersonPageFactory
 from home.models import HomePage
 
 from django.core.management.base import BaseCommand
@@ -28,5 +29,7 @@ class Command(BaseCommand):
         else:
             blog_index_page = BlogIndexPageFactory(parent=home_page)
 
+        author_page = PersonPageFactory(title='Rachel S', parent=home_page)
+
         for x in range(number_of_posts):
-            BlogPageFactory(parent=blog_index_page)
+            BlogPageFactory(parent=blog_index_page, author=author_page)
