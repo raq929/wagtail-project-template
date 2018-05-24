@@ -1,27 +1,28 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
-from django.conf.urls import include, url
+from django.conf.urls import url, include
+from django.urls import path, re_path
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 
 from search import views as search_views
-from wagtail.wagtailadmin import urls as wagtailadmin_urls
-from wagtail.wagtailcore import urls as wagtail_urls
-from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
 
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
+    url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
-    url(r'^500/$', TemplateView.as_view(template_name="500.html")),
-    url(r'^404/$', TemplateView.as_view(template_name="404.html")),
-    url(r'^403/$', TemplateView.as_view(template_name="403.html")),
-    url(r'', include(wagtail_urls)),
+    path('500/', TemplateView.as_view(template_name="500.html")),
+    path('404/', TemplateView.as_view(template_name="404.html")),
+    path('403/', TemplateView.as_view(template_name="403.html")),
+    url('', include(wagtail_urls)),
 ]
 
 

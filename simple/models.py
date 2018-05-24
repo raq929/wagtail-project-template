@@ -1,13 +1,13 @@
 from django.db import models
 from django.utils.html import strip_tags
 from django.template.defaultfilters import truncatewords
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import StreamField
+from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.core import blocks
+from wagtail.core.models import Page
+from wagtail.core.fields import StreamField
 
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailsearch import index
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.search import index
 
 from common.blocks import (
     Heading1,

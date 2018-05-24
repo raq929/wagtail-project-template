@@ -1,6 +1,6 @@
 from home.models import HomePage
 
-from wagtail.wagtailcore.models import Page, Site
+from wagtail.core.models import Page, Site
 
 from django.contrib.sites.models import Site as DjangoSite
 from django.core.exceptions import ObjectDoesNotExist
