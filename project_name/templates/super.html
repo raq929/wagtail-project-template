@@ -1,4 +1,4 @@
-{% load static wagtailmetadata_tags wagtailsettings_tags %}
+{% load static wagtailmetadata_tags wagtailsettings_tags wagtailuserbar %}
 {% load render_bundle from webpack_loader %}
 
 <!DOCTYPE html>
@@ -50,6 +50,7 @@
 	</head>
 
 	<body class="{% block body_class %}{% endblock %}">
+		{% wagtailuserbar %}
 		{% block body %}
 		{% endblock %}
 	</body>
