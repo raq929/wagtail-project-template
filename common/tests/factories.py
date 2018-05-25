@@ -15,5 +15,6 @@ class PersonPageFactory(wagtail_factories.PageFactory):
     class Meta:
         model = PersonPage
 
+    title = factory.Faker('name')
     parent = factory.SubFactory(wagtail_factories.PageFactory, parent=None)
     bio = factory.LazyAttribute(lambda _: RichText(fake.paragraph()))
